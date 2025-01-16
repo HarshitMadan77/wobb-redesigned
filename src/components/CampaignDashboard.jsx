@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Grid, Menu as MenuIcon, User } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import RightSidebar from './RightSideBar';
-import LeftSideBar from './LeftsideBar';
+import LeftSideBar from './LeftSideBar';
 import { useNavigate } from 'react-router-dom';
 
 const CampaignDashboard = () => {
