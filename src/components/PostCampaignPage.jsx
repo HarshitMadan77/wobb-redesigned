@@ -38,17 +38,20 @@ const PostCampaignForm = () => {
       <div className="flex-1">
         {/* Progress Steps */}
         <div className="bg-white dark:bg-gray-800 border-b dark:border-gray-700">
-          <div className="w-full px-6 py-6">
-            <div className="flex items-center gap-4 w-full">
-              {/* WOBB text */}
-              <h1 className="text-gray-900 dark:text-white whitespace-nowrap text-xl font-semibold border bg-gray-200 dark:bg-gray-700 dark:text-white px-2 py-1 rounded-md">
-                WOBB
-              </h1>
+          <div className="w-full px-4 md:px-6 py-4 md:py-6">
+            <div className="flex flex-col gap-6 w-full">
+              {/* Header with WOBB text and Theme Toggle */}
+              <div className="flex justify-between items-center w-full">
+                <h1 className="text-gray-900 dark:text-white whitespace-nowrap text-xl font-semibold border bg-gray-200 dark:bg-gray-700 dark:text-white px-2 py-1 rounded-md">
+                  WOBB
+                </h1>
+                <ThemeToggle />
+              </div>
 
               {/* Steps section */}
-              <div className="flex-1 flex justify-between items-center gap-4 overflow-x-auto pl-2">
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-4 w-full">
                 {steps.map((step, index) => (
-                  <div key={index} className="flex-1 flex items-start gap-4 min-w-[250px]">
+                  <div key={index} className="flex-1 flex items-start gap-4 min-w-0 md:min-w-[250px]">
                     <div
                       className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
                         step.isActive
@@ -58,29 +61,29 @@ const PostCampaignForm = () => {
                     >
                       {step.number}
                     </div>
-                    <div className="flex-1">
-                      <h3 className="font-medium text-gray-900 dark:text-white">{step.title}</h3>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{step.description}</p>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-medium text-gray-900 dark:text-white text-sm md:text-base">{step.title}</h3>
+                      <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2 md:line-clamp-none">
+                        {step.description}
+                      </p>
                     </div>
                     {index < steps.length - 1 && (
-                      <div className="flex-shrink-0 w-12 h-0.5 bg-gray-200 dark:bg-gray-700 mt-4" />
+                      <div className="hidden md:block flex-shrink-0 w-12 h-0.5 bg-gray-200 dark:bg-gray-700 mt-4" />
                     )}
                   </div>
                 ))}
               </div>
-
-                <ThemeToggle />
             </div>
           </div>
         </div>
 
         {/* Form Section */}
-        <div className="w-full px-6 py-8 flex items-center">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 w-full h-full">
-            <h1 className="text-xl font-semibold mb-6 dark:text-white">Post Campaign</h1>
+        <div className="w-full px-4 md:px-6 py-6 md:py-8">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-4 md:p-6 w-full h-full">
+            <h1 className="text-lg md:text-xl font-semibold mb-4 md:mb-6 dark:text-white">Post Campaign</h1>
 
-            <div className="flex items-center justify-between mb-8">
-              <span className="text-gray-600 dark:text-gray-300">Switch To New Post Campaign</span>
+            <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 md:mb-8 gap-4">
+              <span className="text-sm md:text-base text-gray-600 dark:text-gray-300">Switch To New Post Campaign</span>
               <label className="relative inline-flex items-center cursor-pointer">
                 <input
                   type="checkbox"
@@ -92,10 +95,10 @@ const PostCampaignForm = () => {
               </label>
             </div>
 
-            <form className="space-y-6">
+            <form className="space-y-4 md:space-y-6">
               <div>
                 <div className="flex items-center gap-2 mb-2">
-                  <label htmlFor="campaignName" className="block text-gray-700 dark:text-gray-200 font-medium">
+                  <label htmlFor="campaignName" className="block text-sm md:text-base text-gray-700 dark:text-gray-200 font-medium">
                     Campaign Name
                   </label>
                   <Info className="w-4 h-4 text-gray-400" />
@@ -107,13 +110,13 @@ const PostCampaignForm = () => {
                   value={campaignName}
                   onChange={(e) => setCampaignName(e.target.value)}
                   placeholder="Give your campaign a name"
-                  className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 rounded-md p-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 rounded-md p-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm md:text-base"
                 />
               </div>
 
               <div>
                 <div className="flex items-center gap-2 mb-2">
-                  <label htmlFor="campaignObjective" className="block text-gray-700 dark:text-gray-200 font-medium">
+                  <label htmlFor="campaignObjective" className="block text-sm md:text-base text-gray-700 dark:text-gray-200 font-medium">
                     Campaign Objective
                   </label>
                   <Info className="w-4 h-4 text-gray-400" />
@@ -123,7 +126,7 @@ const PostCampaignForm = () => {
                   id="campaignObjective"
                   value={campaignObjective}
                   onChange={(e) => setCampaignObjective(e.target.value)}
-                  className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 rounded-md p-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 rounded-md p-2.5 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm md:text-base"
                 >
                   <option value="">Select Campaign Objective</option>
                   <option value="Brand Awareness">Brand Awareness</option>
@@ -132,10 +135,10 @@ const PostCampaignForm = () => {
                 </select>
               </div>
 
-              <div className="flex justify-end">
+              <div className="flex justify-end pt-4">
                 <button
                   type="button"
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-md font-medium absolute bottom-10"
+                  className="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white px-4 md:px-6 py-2.5 rounded-md font-medium text-sm md:text-base"
                 >
                   Next
                 </button>
